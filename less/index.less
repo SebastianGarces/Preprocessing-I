@@ -1,59 +1,413 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:100,400,500&display=swap");
 // Is this working?
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+    list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+    quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 /* Set every element's box-sizing to border-box */
+/* MIXINS */
+
+.flex(@direction, @justify, @align) {
+    display: flex;
+    flex-direction: @direction;
+    justify-content: @justify;
+    align-items: @align;
+}
+
+.border() {
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+// VARIABLES
+
+@primary-color: ;
+@separator: 0.9rem dashed @border-color;
+@border-color: rgba(0, 0, 0, 0.1);
+@link-color: blue;
+@color-text: black;
+
+@cool-font: "Roboto Mono", monospace;
+
 * {
     box-sizing: border-box;
+    color: @color-text;
 }
 
-html, body {
+html,
+body {
     height: 100%;
+    font-family: @cool-font;
+    line-height: 1.5em;
 }
 
+// LAYOUT********
+
+.container {
+    width: 1024px;
+    margin: 0 auto;
+    padding: 0 3rem 0 3rem;
+    box-shadow: 1px 3px 50px rgba(0, 0, 0, 0.05),
+        1px 1px 5px rgba(0, 0, 0, 0.05);
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        padding: 5%;
+    }
+
+    h1 {
+        margin-top: 0;
+        font-size: 4.209em;
+    }
+
+    h2 {
+        font-size: 3.157em;
+        margin-bottom: 1em;
+    }
+
+    h3 {
+        font-size: 2.369em;
+        margin-bottom: 2rem;
+        // color: @link-color;
+    }
+
+    h4 {
+        font-size: 1.777em;
+    }
+
+    h5 {
+        font-size: 1.333em;
+    }
+
+    header nav {
+        .flex(row, flex-end, center);
+        height: 5em;
+
+        .nav_links {
+            width: 100%;
+            .flex(row, flex-end, center);
+
+            a {
+                margin-left: 4em;
+                color: @link-color;
+            }
+        }
+
+        .logo {
+            margin: 0;
+            margin-right: auto;
+            font-size: 1.7rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            height: 4em;
+            .flex(column, space-between, flex-start);
+
+            .nav_links {
+                width: 100%;
+                .flex(row, space-between, center);
+                a {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .cta {
+        border-bottom: @separator;
+        padding: 5rem 0;
+
+        h5 {
+            margin: 2rem 0;
+        }
+
+        button {
+            .border;
+            padding: 0.5rem 2em;
+            background-color: transparent;
+            margin-top: 2.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        h2 span {
+            animation: appear 1100ms ease infinite;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            h2 {
+                line-height: 1.2em;
+            }
+        }
+
+        @keyframes appear {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        p a {
+            color: @link-color;
+        }
+    }
+
+    .main {
+        padding: 5rem 0;
+        .flex(row, space-between, center);
+
+        .about-me {
+            width: 50%;
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                .flex(column, center, flex-start);
+                margin-bottom: 5em;
+
+                h3 {
+                    margin: 0 auto;
+                    margin-bottom: 1em;
+                }
+            }
+        }
+
+        .skills {
+            width: 35%;
+
+            ul {
+                list-style: circle;
+                padding-left: 1.2rem;
+            }
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                .flex(column, center, flex-start);
+
+                h3 {
+                    margin: 0 auto;
+                    margin-bottom: 1em;
+                }
+
+                ul {
+                    padding: 0;
+                }
+            }
+        }
+
+        border-bottom: @separator;
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            .flex(column, space-between, flex-start);
+        }
+    }
+
+    .work-history {
+        .flex(column, space-between, flex-start);
+        padding: 5rem 0;
+
+        .cards-container {
+            .flex(row, space-between, center);
+            flex-wrap: wrap;
+            width: 100%;
+
+            .work-history-card {
+                .border;
+                min-width: 100%;
+                min-height: 280px;
+                padding: 1em;
+                margin-bottom: 2em;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .card-header {
+                    .flex(row, space-between, flex-start);
+
+                    @media screen and (max-width: 500px) {
+                        .flex(column, space-between, flex-start);
+
+                        h5 {
+                            margin-bottom: 1em;
+                            font-size: 1em;
+                        }
+                    }
+                }
+
+                ul {
+                    list-style: circle;
+                    padding-left: 1em;
+                    margin: 1em 0;
+                }
+
+                @media screen and (max-width: 500px) {
+                    h5 {
+                        font-size: 1em;
+                    }
+                    ul li {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+        }
+    }
+
+    .education {
+        padding: 5rem 0;
+        border-top: @separator;
+    }
+
+    footer h5 {
+        padding: 5rem 0 2rem 0;
+        text-align: center;
+        border-top: @separator;
+    }
+}
