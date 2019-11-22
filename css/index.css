@@ -151,7 +151,7 @@ table {
 /* MIXINS */
 * {
   box-sizing: border-box;
-  color: #0c0c0d;
+  color: black;
 }
 html,
 body {
@@ -159,28 +159,17 @@ body {
   font-family: "Roboto Mono", monospace;
   line-height: 1.5em;
 }
-header nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  height: 5em;
-}
-header nav a {
-  margin: 0 2em;
-}
-header nav .logo {
-  margin: 0;
-  margin-right: auto;
-  font-size: 2.5rem;
-  text-decoration: none;
-  color: blue;
-}
 .container {
   width: 1024px;
   margin: 0 auto;
   padding: 0 3rem 0 3rem;
   box-shadow: 1px 3px 50px rgba(0, 0, 0, 0.05), 1px 1px 5px rgba(0, 0, 0, 0.05);
+}
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+    padding: 5%;
+  }
 }
 .container h1 {
   margin-top: 0;
@@ -200,23 +189,76 @@ header nav .logo {
 .container h5 {
   font-size: 1.333em;
 }
+.container header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5em;
+}
+.container header nav .nav_links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.container header nav .nav_links a {
+  margin-left: 4em;
+  color: blue;
+}
+.container header nav .logo {
+  margin: 0;
+  margin-right: auto;
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: black;
+}
+@media screen and (max-width: 500px) {
+  .container header nav {
+    width: 100%;
+    height: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .container header nav .nav_links {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .container header nav .nav_links a {
+    margin: 0;
+  }
+}
 .container .cta {
-  border-bottom: 0.9rem dashed rgba(0, 0, 104, 0.1);
+  border-bottom: 0.9rem dashed rgba(0, 0, 0, 0.1);
   padding: 5rem 0;
 }
 .container .cta h5 {
   margin: 2rem 0;
 }
 .container .cta button {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
   padding: 0.5rem 2em;
-  background-color: white;
+  background-color: transparent;
   margin-top: 2.5rem;
   font-size: 1.2rem;
   cursor: pointer;
 }
 .container .cta h2 span {
   animation: appear 1100ms ease infinite;
+}
+@media screen and (max-width: 500px) {
+  .container .cta {
+    width: 100%;
+  }
+  .container .cta h2 {
+    line-height: 1.2em;
+  }
 }
 @keyframes appear {
   0% {
@@ -247,10 +289,24 @@ header nav .logo {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.9rem dashed rgba(0, 0, 104, 0.1);
+  border-bottom: 0.9rem dashed rgba(0, 0, 0, 0.1);
 }
 .container .main .about-me {
   width: 50%;
+}
+@media screen and (max-width: 500px) {
+  .container .main .about-me {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 5em;
+  }
+  .container .main .about-me h3 {
+    margin: 0 auto;
+    margin-bottom: 1em;
+  }
 }
 .container .main .skills {
   width: 35%;
@@ -258,6 +314,31 @@ header nav .logo {
 .container .main .skills ul {
   list-style: circle;
   padding-left: 1.2rem;
+}
+@media screen and (max-width: 500px) {
+  .container .main .skills {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .container .main .skills h3 {
+    margin: 0 auto;
+    margin-bottom: 1em;
+  }
+  .container .main .skills ul {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .container .main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }
 .container .work-history {
   display: flex;
@@ -275,7 +356,7 @@ header nav .logo {
   width: 100%;
 }
 .container .work-history .cards-container .work-history-card {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
   min-width: 100%;
   min-height: 280px;
   padding: 1em;
@@ -290,8 +371,42 @@ header nav .logo {
   justify-content: space-between;
   align-items: flex-start;
 }
+@media screen and (max-width: 500px) {
+  .container .work-history .cards-container .work-history-card .card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .container .work-history .cards-container .work-history-card .card-header h5 {
+    margin-bottom: 1em;
+    font-size: 1em;
+  }
+}
 .container .work-history .cards-container .work-history-card ul {
   list-style: circle;
   padding-left: 1em;
   margin: 1em 0;
+}
+@media screen and (max-width: 500px) {
+  .container .work-history .cards-container .work-history-card h5 {
+    font-size: 1em;
+  }
+  .container .work-history .cards-container .work-history-card ul li {
+    font-size: 0.9em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .container .work-history {
+    width: 100%;
+  }
+}
+.container .education {
+  padding: 5rem 0;
+  border-top: 0.9rem dashed rgba(0, 0, 0, 0.1);
+}
+.container footer h5 {
+  padding: 5rem 0 2rem 0;
+  text-align: center;
+  border-top: 0.9rem dashed rgba(0, 0, 0, 0.1);
 }

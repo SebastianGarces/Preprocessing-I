@@ -141,16 +141,16 @@ table {
 }
 
 .border() {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 // VARIABLES
 
 @primary-color: ;
-@secondary-color: ;
-@border-color: rgba(0, 0, 104, 0.1);
+@separator: 0.9rem dashed @border-color;
+@border-color: rgba(0, 0, 0, 0.1);
 @link-color: blue;
-@color-text: #0c0c0d;
+@color-text: black;
 
 @cool-font: "Roboto Mono", monospace;
 
@@ -167,22 +167,6 @@ body {
 }
 
 // LAYOUT********
-header nav {
-    .flex(row, flex-end, center);
-    height: 5em;
-
-    a {
-        margin: 0 2em;
-    }
-
-    .logo {
-        margin: 0;
-        margin-right: auto;
-        font-size: 2.5rem;
-        text-decoration: none;
-        color: @link-color;
-    }
-}
 
 .container {
     width: 1024px;
@@ -190,6 +174,11 @@ header nav {
     padding: 0 3rem 0 3rem;
     box-shadow: 1px 3px 50px rgba(0, 0, 0, 0.05),
         1px 1px 5px rgba(0, 0, 0, 0.05);
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        padding: 5%;
+    }
 
     h1 {
         margin-top: 0;
@@ -215,8 +204,45 @@ header nav {
         font-size: 1.333em;
     }
 
+    header nav {
+        .flex(row, flex-end, center);
+        height: 5em;
+
+        .nav_links {
+            width: 100%;
+            .flex(row, flex-end, center);
+
+            a {
+                margin-left: 4em;
+                color: @link-color;
+            }
+        }
+
+        .logo {
+            margin: 0;
+            margin-right: auto;
+            font-size: 1.7rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            height: 4em;
+            .flex(column, space-between, flex-start);
+
+            .nav_links {
+                width: 100%;
+                .flex(row, space-between, center);
+                a {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
     .cta {
-        border-bottom: 0.9rem dashed @border-color;
+        border-bottom: @separator;
         padding: 5rem 0;
 
         h5 {
@@ -226,7 +252,7 @@ header nav {
         button {
             .border;
             padding: 0.5rem 2em;
-            background-color: white;
+            background-color: transparent;
             margin-top: 2.5rem;
             font-size: 1.2rem;
             cursor: pointer;
@@ -234,6 +260,13 @@ header nav {
 
         h2 span {
             animation: appear 1100ms ease infinite;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            h2 {
+                line-height: 1.2em;
+            }
         }
 
         @keyframes appear {
@@ -268,6 +301,17 @@ header nav {
 
         .about-me {
             width: 50%;
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                .flex(column, center, flex-start);
+                margin-bottom: 5em;
+
+                h3 {
+                    margin: 0 auto;
+                    margin-bottom: 1em;
+                }
+            }
         }
 
         .skills {
@@ -277,9 +321,28 @@ header nav {
                 list-style: circle;
                 padding-left: 1.2rem;
             }
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                .flex(column, center, flex-start);
+
+                h3 {
+                    margin: 0 auto;
+                    margin-bottom: 1em;
+                }
+
+                ul {
+                    padding: 0;
+                }
+            }
         }
 
-        border-bottom: 0.9rem dashed @border-color;
+        border-bottom: @separator;
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            .flex(column, space-between, flex-start);
+        }
     }
 
     .work-history {
@@ -304,6 +367,15 @@ header nav {
 
                 .card-header {
                     .flex(row, space-between, flex-start);
+
+                    @media screen and (max-width: 500px) {
+                        .flex(column, space-between, flex-start);
+
+                        h5 {
+                            margin-bottom: 1em;
+                            font-size: 1em;
+                        }
+                    }
                 }
 
                 ul {
@@ -311,7 +383,31 @@ header nav {
                     padding-left: 1em;
                     margin: 1em 0;
                 }
+
+                @media screen and (max-width: 500px) {
+                    h5 {
+                        font-size: 1em;
+                    }
+                    ul li {
+                        font-size: 0.9em;
+                    }
+                }
             }
         }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+        }
+    }
+
+    .education {
+        padding: 5rem 0;
+        border-top: @separator;
+    }
+
+    footer h5 {
+        padding: 5rem 0 2rem 0;
+        text-align: center;
+        border-top: @separator;
     }
 }
