@@ -159,6 +159,27 @@ body {
   font-family: "Roboto Mono", monospace;
   line-height: 1.5em;
 }
+<<<<<<< HEAD
+=======
+header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5em;
+}
+header nav a {
+  margin: 0 2em;
+  color: blue;
+}
+header nav .logo {
+  margin: 0;
+  margin-right: auto;
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: black;
+}
+>>>>>>> 96edaff750bfe1f3559783745ffe273d137c6014
 .container {
   width: 1024px;
   margin: 0 auto;
